@@ -1,8 +1,8 @@
-FROM php:5-apache
+FROM php:5.4-apache
 RUN apt-get update && apt-get install -y libmemcached-dev zlib1g-dev \
     && pecl install memcached-2.2.0 \
     && docker-php-ext-enable memcached
-RUN pecl install xdebug-2.5.5 && docker-php-ext-enable xdebug
+RUN pecl install xdebug-2.4.1 && docker-php-ext-enable xdebug
 RUN docker-php-ext-install \
     pdo_mysql \
     mbstring \
