@@ -9,3 +9,4 @@ RUN docker-php-ext-install \
     mysql \
     && apt-get clean \
     && a2enmod rewrite
+RUN pear install MDB2

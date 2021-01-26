@@ -7,3 +7,4 @@ RUN apt-get update \
     mysql \
     && apt-get clean \
     && a2enmod rewrite
+RUN pear install MDB2
