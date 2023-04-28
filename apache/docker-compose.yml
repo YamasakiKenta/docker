@@ -1,0 +1,28 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    ports:
+      - 3306:3306    
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: passwd
+      MYSQL_DATABASE: kokodoko-2021
+      MYSQL_USER: root2
+      MYSQL_PASSWORD: passwd   
+  web:
+    build: ./docker/php/8.1/
+    ports:
+        - 80:80
+    volumes:
+        - ./docker/php/8.1/php.ini:/usr/local/etc/php/conf.d/php.ini
+        - ./:/var/www
+        - ./public:/var/www/html
+    depends_on:
+        - db
+    deploy:
+      resources:
+        limits:
+          # cpus: '0.1'
+          memory: 1.75g
