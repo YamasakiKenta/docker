@@ -1,3 +1,4 @@
+// @ts-nocheck
 const server = Bun.serve<{ authToken: string }>({
     fetch(req, server) {
         const success = server.upgrade(req);
@@ -9,9 +10,9 @@ const server = Bun.serve<{ authToken: string }>({
 
         // handle HTTP request normally
         return new Response([
+            "bun-prod",
             "Hello world!",
             (new Date()),
-            "v1",
         ].join("\n"));
     },
     websocket: {
