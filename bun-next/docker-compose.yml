@@ -1,12 +1,15 @@
 services:
-  app:
+  app: 
     image: oven/bun
     working_dir: /app
     ports:
-      - ${PORT}:${PORT}
+      - 3000:3000
     volumes:
       - type: bind
         source: .
         target: /app
+      - node_modules:/app/node_modules
     tty: true
-    command: bash -c 'bun run start'
+    command: bash -c 'bun i && bun run build && bun run start'
+volumes:
+  node_modules:
