@@ -1,0 +1,12 @@
+services:
+  app:
+    image: oven/bun
+    working_dir: /app
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+    tty: true
+    command: bash -c 'bun run start'
